@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hoja de Vida</title>
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="description" content="Hoja de vida personal: datos, estudios, experiencia, capacitaciones y referencias." />
+</head>
+<body>
+  <div class="page">
+    <!-- Encabezado -->
+    <header class="container header" role="banner">
+      <div class="avatar">
+        <!-- Reemplaza la ruta por tu foto real -->
+        <img src="foto_perfil.JPG" alt="Foto de perfil" />
+      </div>
+      <div class="identity">
+        <h1>Jordy Sebastián Bravo Véliz</h1>
+        <p class="role">Tecnólogo Automotriz / Estudiante de Ingeniería en Software</p>
+        <div class="contact" aria-label="Datos de contacto">
+          <div>📍 Manta, Ecuador</div>
+          <div>📧 <a href="mailto:e1351007206@live.uleam.edu.ec">e1351007206@live.uleam.edu.ec</a></div>
+          <div>📞 +593 961 940 064</div>
+          <div>🔗 <a href="https://github.com/sebasbv11" target="_blank" rel="noopener">github.com/sebasbv11</a></div>
+          <div>🔗 <a href="https://www.linkedin.com/in/sebastian-bravo-3129b6326/" target="_blank" rel="noopener">linkedin.com/in/sebastian-bravo-3129b6326</a></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Datos personales -->
+    <section id="datos" class="container card" aria-labelledby="titulo-datos">
+      <h2 id="titulo-datos">Datos personales</h2>
+      <div class="grid-2">
+        <div>
+          <p><strong>Cédula:</strong> 1351007206</p>
+          <p><strong>Fecha de nacimiento:</strong> 11/02/1999</p>
+          <p><strong>Estado civil:</strong> Soltero</p>
+        </div>
+        <div>
+          <p><strong>Dirección:</strong> Calle 311 y avenida 219, Manta-Manabí, Ecuador</p>
+          <p><strong>Teléfono:</strong> +593 961 940 064</p>
+          <p><strong>Correo:</strong> <a href="sebas:e1351007206@live.uleam.edu.ec">e1351007206@live.uleam.edu.ec</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Perfil / Resumen -->
+    <section id="perfil" class="container card" aria-labelledby="titulo-perfil">
+      <h2 id="titulo-perfil">Perfil</h2>
+      <p>
+        Estudiante de Ingeniería en Software y Tecnólogo Automotriz con mención en motores diésel y gasolina. 
+        Experiencia en desarrollo de proyectos de software, gestión de bases de datos y diseño de redes, así como 
+        en diagnóstico y mantenimiento automotriz. Destacado por la adaptabilidad, pensamiento analítico y capacidad 
+        para aportar soluciones innovadoras en entornos tecnológicos y mecánicos.
+      </p>
+    </section>
+
+    <!-- Estudios realizados -->
+    <section id="estudios" class="container card" aria-labelledby="titulo-estudios">
+      <h2 id="titulo-estudios">Estudios Realizados</h2>
+      <div class="timeline">
+        <div class="item">
+          <div class="when">2023 – 2025</div>
+          <div class="what">
+            <h3>Ingeniería en Software</h3>
+            <p><strong>Universidad Laica Eloy Alfaro de Manabí</strong> — Manta, Ecuador</p>
+          </div>
+        </div>
+                <div class="item">
+          <div class="when">2017 – 2022</div>
+          <div class="what">
+            <h3>Tecnología superior en mecánica automotriz: mención en motores diésel y gasolina.</h3>
+            <p><strong>Instituto Tecnológico Superior Luis Arboleda Martínez</strong> — Manta, Ecuador</p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="when">2014 – 2016</div>
+          <div class="what">
+            <h3>Bachillerato </h3>
+            <p><strong>Unidad Educativa José de Anchieta Fe y Alegría #3 </strong> — Manta, Ecuador</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experiencia laboral -->
+    <section id="experiencia" class="container card" aria-labelledby="titulo-experiencia">
+      <h2 id="titulo-experiencia">Experiencia Laboral</h2>
+
+      <article class="job">
+        <div class="job-head">
+          <h3>Jefe de taller</h3>
+          <span class="job-meta">Tecnicentro Sebastián • Manta • 2017 – Presente</span>
+        </div>
+        <ul class="bullets">
+          <li>Responsable del diagnóstico automotriz.</li>
+          <li>Encargado de inventario.</li>
+          <li>Experto en uso de herramientas de diagnóstico OBD2.</li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- Capacitaciones -->
+    <section id="capacitaciones" class="container card" aria-labelledby="titulo-capacitaciones">
+      <h2 id="titulo-capacitaciones">Capacitaciones</h2>
+      <ul class="list">
+        <li><strong>Python: Básico, Medio y Avanzado.</strong> — COACH GROUP ECUADOR (2025)</li>
+      </ul>
+    </section>
+
+    <!-- Referencias personales (tabla con 4 columnas, mínimo 3 filas) -->
+    <section id="referencias" class="container card" aria-labelledby="titulo-referencias">
+      <h2 id="titulo-referencias">Referencias personales</h2>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Parentesco</th>
+              <th>Teléfono</th>
+              <th>Correo electrónico</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Laura Bravo Bravo</td>
+              <td>Prima</td>
+              <td>+593 985 330 296</td>
+              <td><a href="mailto:jbplusx@hotmail.com">jbplusx@hotmail.com</a></td>
+            </tr>
+            <tr>
+              <td> Stephani Bravo Véliz</td>
+              <td>Hermana</td>
+              <td>+593 997 984 145</td>
+              <td><a href="mailto:stephabrave@gmail.com">stephabrave@gmail.com</a></td>
+            </tr>
+            <tr>
+              <td>Sebastián Bravo Mera</td>
+              <td>Padre</td>
+              <td>+593 992 452 031</td>
+              <td><a href="mailto:sebasbm04_12@hotmail.com">sebasbm04_12@hotmail.com</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
