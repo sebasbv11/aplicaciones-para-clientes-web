@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Registro de Clientes</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="title">
+        <div>
+          <h1>Registro de Clientes ULEAM</h1>
+        </div>
+      </div>
+    </header>
+
+    <div class="grid">
+      <!-- Formulario -->
+      <section class="card" aria-labelledby="form-title">
+        <h2 id="form-title">Datos del cliente</h2>
+        <form id="clientForm" novalidate>
+          <div>
+            <label for="nombre">Nombre completo *</label>
+            <input id="nombre" name="nombre" type="text" required minlength="3" placeholder="Ej. Ana Pérez" />
+            <div class="error" id="err-nombre" aria-live="polite">Ingresa al menos 3 caracteres.</div>
+          </div>
+
+          <div>
+            <label for="email">Correo electrónico *</label>
+            <input id="email" name="email" type="email" required placeholder="ana@ejemplo.com" />
+            <div class="error" id="err-email" aria-live="polite">Ingresa un correo válido.</div>
+          </div>
+
+          <div>
+            <label for="telefono">Teléfono</label>
+            <input id="telefono" name="telefono" type="tel" inputmode="tel"
+                  pattern="^[0-9\\s+()-]{7,}$" placeholder="+593 99 123 4567" />
+            <div class="hint">Se permiten dígitos, espacios y símbolos + ( ) -</div>
+            <div class="error" id="err-telefono" aria-live="polite"></div>
+          </div>
+
+          <div>
+            <label for="nacimiento">Fecha de nacimiento</label>
+            <input id="nacimiento" name="nacimiento" type="date" />
+          </div>
+
+          <div class="full">
+            <label for="direccion">Dirección</label>
+            <input id="direccion" name="direccion" type="text" placeholder="Calle 123 y Av. Principal" />
+          </div>
+
+          <div>
+            <label for="ciudad">Ciudad</label>
+            <input id="ciudad" name="ciudad" type="text" placeholder="Manta" />
+          </div>
+
+          <div>
+            <label for="pais">País</label>
+            <select id="pais" name="pais">
+              <option value="">Selecciona…</option>
+              <option>Ecuador</option>
+              <option>Colombia</option>
+              <option>Perú</option>
+              <option>Chile</option>
+              <option>México</option>
+              <option>Argentina</option>
+              <option>Otro</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="genero">Género</label>
+            <select id="genero" name="genero">
+              <option value="">Prefiero no decir</option>
+              <option>Femenino</option>
+              <option>Masculino</option>
+              <option>Otro</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="clienteId">ID Cliente</label>
+            <input id="clienteId" name="clienteId" type="text" placeholder="AUTO" disabled />
+          </div>
+
+          <!-- Casilla con comentario "validación" -->
+          <div class="full row">
+            <input id="acepto" name="acepto" type="checkbox" required />
+            <label for="acepto">Acepto que esta información. *</label>
+          </div>
+          <div class="error" id="err-acepto" aria-live="polite"></div>
+
+          <div class="actions full">
+            <button type="submit" id="btnGuardar">Guardar cliente</button>
+            <button type="reset" class="secondary" id="btnLimpiar">Limpiar</button>
+          </div>
+
+          <p id="mensajeExito" class="success" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
