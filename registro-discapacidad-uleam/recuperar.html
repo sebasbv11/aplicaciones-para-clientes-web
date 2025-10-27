@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar contraseña | ULEAM</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/formularios.css">
+</head>
+<body>
+    <header class="uleam">
+        <img src="img/logo-uleam.png" alt="ULEAM">
+        <strong>¿Olvidaste tu contraseña?</strong>
+    </header>
+
+    <main>
+        <section class="card form">
+        <p>Ingresa tu correo institucional para enviarte instrucciones de restablecimiento.</p>
+        <form onsubmit="alert('Se envió un enlace (simulado)'); return false;">
+            <div class="field">
+            <label for="recCorreo">Correo Institucional</label>
+            <input id="recCorreo" type="email" placeholder="usuario@uleam.edu.ec" required>
+            </div>
+            <div class="toolbar">
+            <button class="btn btn--rojo" type="submit">Enviar enlace</button>
+            <a class="btn btn--verde" href="index.html">Volver al inicio</a>
+            </div>
+        </form>
+        </section>
+    </main>
+</body>
+</html>

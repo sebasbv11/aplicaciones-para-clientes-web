@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrador | ULEAM</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <script src="js/comportamiento.js"></script>
+</head>
+<body>
+    <header class="uleam">
+        <img src="img/logo-uleam.png" alt="ULEAM">
+        <strong>Bitácora de usuarios</strong>
+        <div class="menu">
+        <button class="btn btn--gris" onclick="cerrarSesion()">Cerrar sesión</button>
+        </div>
+    </header>
+
+    <main class="grid2">
+        <section class="card col">
+        <div class="toolbar" style="margin-bottom:10px">
+            <input type="search" placeholder="🔍 Buscar" style="padding:10px; border:1px solid #ddd; border-radius:8px; width:220px">
+            <a class="btn btn--verde" href="usuario.html">Usuario Nuevo</a>
+        </div>
+        <table class="tabla">
+            <thead>
+            <tr><th>Nombre y apellidos</th><th>Correo institucional</th><th>Usuario</th><th>Acciones</th></tr>
+            </thead>
+            <tbody>
+            <tr><td>Giacomo Guillizzoni</td><td>guillizzoni@uleam.edu.ec</td><td>Admin</td><td><a class="link" href="usuario.html">Editar</a></td></tr>
+            <tr><td>Marco Botton</td><td>mbotton@uleam.edu.ec</td><td>Tutor</td><td><a class="link" href="usuario.html">Editar</a></td></tr>
+            <tr><td>Mariah Maclachlan</td><td>mmaclachlan@uleam.edu.ec</td><td>Estudiante</td><td><a class="link" href="usuario.html">Editar</a></td></tr>
+            </tbody>
+        </table>
+        </section>
+
+        <aside class="center"><img src="img/icono-discapacidad.svg" alt="" style="max-width:68%"></aside>
+    </main>
+</body>
+</html>

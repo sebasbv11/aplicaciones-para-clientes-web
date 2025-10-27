@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nueva adaptación | ULEAM</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/formularios.css">
+</head>
+<body>
+    <header class="uleam">
+        <img src="img/logo-uleam.png" alt="ULEAM">
+        <strong>Nueva adaptación / Ajuste razonable</strong>
+    </header>
+
+    <main>
+        <section class="card form" style="max-width:720px">
+        <form onsubmit="alert('Adaptación guardada (simulado)'); return false;">
+            <div class="row">
+            <div class="field">
+                <label>Tipo de ajuste</label>
+                <select>
+                <option>Tiempo extra</option>
+                <option>Material accesible</option>
+                <option>Intérprete / Apoyo</option>
+                <option>Ubicación preferente</option>
+                </select>
+            </div>
+            <div class="field">
+                <label>Asignatura</label>
+                <input type="text" placeholder="Derecho Procesal">
+            </div>
+            </div>
+
+            <div class="field">
+            <label>Descripción</label>
+            <textarea placeholder="Detalles del ajuste..."></textarea>
+            </div>
+
+            <div class="row">
+            <div class="field">
+                <label>Fecha de inicio</label>
+                <input type="date">
+            </div>
+            <div class="field">
+                <label>Fecha de fin</label>
+                <input type="date">
+            </div>
+            </div>
+
+            <div class="row">
+            <div class="field">
+                <label>Responsable</label>
+                <input type="text" placeholder="Nombre del tutor">
+            </div>
+            <div class="field">
+                <label>Evidencia adjunta (PDF/JPG)</label>
+                <input type="file" accept=".pdf,.jpg,.jpeg,.png" onchange="nombreArchivo(this)">
+            </div>
+            </div>
+
+            <fieldset class="card" style="border-color:#e6e6e6">
+            <legend>Estado</legend>
+            <label><input type="radio" name="estado"> Activo</label>
+            &nbsp;&nbsp;
+            <label><input type="radio" name="estado"> Pendiente</label>
+            &nbsp;&nbsp;
+            <label><input type="radio" name="estado"> Finalizado</label>
+            </fieldset>
+
+            <div class="toolbar">
+            <button class="btn btn--verde" type="submit">Guardar Adaptación</button>
+            <a class="btn btn--rojo" href="tutor.html">Cancelar</a>
+            </div>
+        </form>
+        </section>
+    </main>
+</body>
+</html>
