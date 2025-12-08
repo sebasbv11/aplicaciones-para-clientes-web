@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuevo Usuario | ULEAM</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/formularios.css">
+    <script src="js/validaciones.js"></script>
+    <script src="js/comportamiento.js"></script>
+</head>
+<body>
+    <header class="uleam">
+        <img src="img/logo-uleam.png" alt="ULEAM">
+        <strong>Nuevo Usuario / Editar información</strong>
+        <div class="menu">
+        <span class="btn btn--gris">Administrador</span>
+        <a class="btn btn--gris" href="index.html">Cerrar sesión</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="card form">
+        <form onsubmit="return registrarEstudianteDesdeFormulario()">
+            <div class="row">
+            <div class="field">
+                <label for="rol">Rol</label>
+                <select id="rol">
+                <option value="">Seleccionar</option>
+                <option>Administrador</option>
+                <option>Tutor</option>
+                <option>Estudiante</option>
+                </select>
+            </div>
+            </div>
+
+            <h3>En caso de ser estudiante llenar lo siguiente:</h3>
+            <div class="row">
+            <div class="field">
+                <label for="nombre">Nombre <span aria-hidden="true" style="color:#c00">•</span></label>
+                <input id="nombre" type="text" required>
+            </div>
+            <div class="field">
+                <label for="discapacidad">Discapacidad <span style="color:#c00">•</span></label>
+                <input id="discapacidad" type="text" placeholder="Visual, Auditiva...">
+            </div>
+            <div class="field">
+                <label for="apellido">Apellidos</label>
+                <input id="apellido" type="text">
+            </div>
+            <div class="field">
+                <label for="permanente">Permanente o temporal</label>
+                <input id="permanente" type="text">
+            </div>
+            <div class="field">
+                <label for="fecha">Fecha de nacimiento</label>
+                <input id="fecha" type="date">
+            </div>
+            <div class="field">
+                <label for="porcentaje">Porcentaje de discapacidad</label>
+                <input id="porcentaje" type="number" min="0" max="100" placeholder="0 a 100">
+            </div>
+            <div class="field">
+                <label for="sexo">Sexo</label>
+                <input id="sexo" type="text" placeholder="">
+            </div>
+            <div class="field">
+                <label>Breve descripción</label>
+                <textarea placeholder="Descripción de la discapacidad..."></textarea>
+            </div>
+            </div>
+
+            <div class="field">
+            <label>Evidencias/diagnósticos (PDF/JPG, máx 10MB)</label>
+            <input type="file" accept=".pdf,.jpg,.jpeg,.png" onchange="nombreArchivo(this)">
+            </div>
+
+            <button class="btn btn--verde" type="submit">Agregar</button>
+        </form>
+        </section>
+    </main>
+<script src="js/validaciones.js"></script>
+<script src="js/db.js"></script>
+<script>
+    function registrarEstudianteDesdeFormulario(){
+        // 1) Primero validamos con tu función actual
+        if(!validarUsuario()){
+        return false; // no guarda si hay errores
+        }
+
+       // 2) Cargamos la "DB" JSON
+        const db = cargarDB();
+
+    // 3) Armamos el objeto estudiante con lo del formulario
+        const est = {
+            id: "EST-" + Date.now(),
+            nombres: document.getElementById("nombre").value.trim(),
+            apellidos: document.getElementById("apellido").value.trim(),
+            fechaNacimiento: document.getElementById("fecha").value,
+            tipoDiscapacidad: document.getElementById("discapacidad").value.trim(),
+            porcentaje: Number(document.getElementById("porcentaje").value),
+            sexo: document.getElementById("sexo").value.trim(),
+            permanencia: document.getElementById("permanente").value.trim(),
+
+            diagnosticos: [],
+            adaptaciones: [],
+            seguimientos: []
+        };
+
+        // 4) Guardamos en JSON
+        db.estudiantes.push(est);
+        guardarDB(db);
+
+        alert("Estudiante guardado en JSON ✅");
+
+        // 5) Limpiamos el formulario
+        document.querySelector("form").reset();
+
+        return false; // evita recarga de página
+        }
+</script>
+
+</body>
+</html>

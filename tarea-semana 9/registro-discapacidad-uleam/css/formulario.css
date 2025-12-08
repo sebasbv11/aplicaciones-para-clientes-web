@@ -1,0 +1,17 @@
+form{display:block}
+.form{max-width:740px; margin:0 auto}
+.form .field{margin-bottom:14px}
+.form label{display:block; font-weight:bold; margin-bottom:6px}
+.form input[type="text"],
+.form input[type="email"],
+.form input[type="date"],
+.form input[type="number"],
+.form input[type="password"],
+.form select,
+.form textarea{
+    width:100%; padding:10px; border:1px solid var(--borde); border-radius:6px; background:#fff;
+}
+.form textarea{min-height:110px; resize:vertical}
+.form .row{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+.badge{display:inline-block; padding:6px 10px; background:#fffbde; border:1px solid #f1e4a8; border-radius:6px; font-size:.9rem}
+.toolbar{display:flex; gap:8px; flex-wrap:wrap}

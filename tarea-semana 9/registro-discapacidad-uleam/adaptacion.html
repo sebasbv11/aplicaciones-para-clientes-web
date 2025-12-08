@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nueva adaptación | ULEAM</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/formularios.css">
+</head>
+<body>
+    <header class="uleam">
+        <img src="img/logo-uleam.png" alt="ULEAM">
+        <strong>Nueva adaptación / Ajuste razonable</strong>
+    </header>
+
+    <main>
+        <section class="card form" style="max-width:720px">
+        <form onsubmit="return guardarAdaptacion()">
+            <div class="field">
+                <label>ID del estudiante</label>
+                <input id="estudianteId" type="text" placeholder="EST-..." required>
+            </div>
+
+            <div class="row">
+                <div class="field">
+                <label>Tipo de ajuste</label>
+                <select id="tipoAjuste" required>
+                    <option value="Tiempo extra">Tiempo extra</option>
+                    <option value="Material accesible">Material accesible</option>
+                    <option value="Intérprete / Apoyo">Intérprete / Apoyo</option>
+                    <option value="Ubicación preferente">Ubicación preferente</option>
+                </select>
+                </div>
+
+                <div class="field">
+                <label>Asignatura</label>
+                <input id="asignatura" type="text" placeholder="Derecho Procesal" required>
+                </div>
+            </div>
+
+            <div class="field">
+                <label>Descripción</label>
+                <textarea id="descAjuste" placeholder="Detalles del ajuste..." required></textarea>
+            </div>
+
+            <div class="row">
+                <div class="field">
+                <label>Fecha de inicio</label>
+                <input id="fechaInicio" type="date" required>
+                </div>
+                <div class="field">
+                <label>Fecha de fin</label>
+                <input id="fechaFin" type="date" required>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="field">
+                <label>Responsable</label>
+                <input id="responsable" type="text" placeholder="Nombre del tutor" required>
+                </div>
+
+                <div class="field">
+                <label>Evidencia adjunta (PDF/JPG)</label>
+                <input id="evidencia" type="file" accept=".pdf,.jpg,.jpeg,.png" onchange="nombreArchivo(this)">
+                </div>
+            </div>
+
+            <fieldset class="card" style="border-color:#e6e6e6">
+                <legend>Estado</legend>
+                <label><input type="radio" name="estado" value="Activo" checked> Activo</label>
+                &nbsp;&nbsp;
+                <label><input type="radio" name="estado" value="Pendiente"> Pendiente</label>
+                &nbsp;&nbsp;
+                <label><input type="radio" name="estado" value="Finalizado"> Finalizado</label>
+            </fieldset>
+
+            <div class="toolbar">
+                <button class="btn btn--verde" type="submit">Guardar Adaptación</button>
+                <a class="btn btn--rojo" href="tutor.html">Cancelar</a>
+            </div>
+            </form>
+
+        </section>
+    </main>
+<script src="js/db.js"></script>
+<script src="js/db.js"></script>
+<script src="js/comportamineto.js"></script>
+
+<script>
+    function guardarAdaptacion(){
+        const db = cargarDB();
+
+        const id = document.getElementById("estudianteId").value.trim();
+        const est = db.estudiantes.find(x => x.id === id);
+
+        if(!est){
+        alert("No existe estudiante con ese ID.");
+        return false;
+        }
+
+        const adaptacion = {
+        tipoAjuste: document.getElementById("tipoAjuste").value,
+        asignatura: document.getElementById("asignatura").value.trim(),
+        descripcion: document.getElementById("descAjuste").value.trim(),
+        fechaInicio: document.getElementById("fechaInicio").value,
+        fechaFin: document.getElementById("fechaFin").value,
+        responsable: document.getElementById("responsable").value.trim(),
+        evidencia: document.getElementById("evidencia").value.split("\\").pop() || "",
+        estado: document.querySelector("input[name=estado]:checked").value
+        };
+
+        est.adaptaciones.push(adaptacion);
+        guardarDB(db);
+
+        alert("Adaptación guardada en JSON ✅");
+        document.querySelector("form").reset();
+        return false;
+    }
+</script>
+</body>
+</html>

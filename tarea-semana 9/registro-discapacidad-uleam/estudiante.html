@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudiante | ULEAM</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <header class="uleam">
+        <img src="img/logo-uleam.png" alt="ULEAM">
+        <strong>Mi perfil</strong>
+        <div class="menu">
+        <a class="btn btn--gris" href="index.html">Cerrar sesión</a>
+        </div>
+    </header>
+
+    <main class="grid2">
+        <section class="card">
+        <h2>Bienvenido (nombre del estudiante)</h2>
+        <div class="card" style="margin-top:12px">
+            <h3>Mis Datos Personales</h3>
+            <ul style="line-height:1.9">
+            <li>Nombres y Apellidos: ____________</li>
+            <li>Cédula: ____________</li>
+            <li>Correo institucional: ____________</li>
+            <li>Carrera: ____________</li>
+            <li>Semestre: ____________</li>
+            <li>Tipo de discapacidad: ____________</li>
+            <li>Porcentaje: __%</li>
+            <li>Tutor: ____________</li>
+            </ul>
+        </div>
+        </section>
+
+        <section class="card">
+        <div class="toolbar" style="justify-content:space-between">
+            <h3>📁 Mis Diagnósticos</h3>
+            <button class="btn btn--verde">+ Agregar nuevo diagnóstico</button>
+        </div>
+        <table class="tabla" style="margin-top:8px">
+            <thead><tr><th>#</th><th>Fecha</th><th>Tipo</th><th>Descripción breve</th><th>Archivo</th><th>Acciones</th></tr></thead>
+            <tbody>
+            <tr><td>1</td><td>2025-04-12</td><td>Visual</td><td>Informe oftalmológico</td><td>PDF</td><td><a class="link" href="#">Ver</a></td></tr>
+            <tr><td>2</td><td>2025-07-28</td><td>Auditiva</td><td>Evaluación médica</td><td>JPG</td><td><a class="link" href="#">Ver</a></td></tr>
+            </tbody>
+        </table>
+        </section>
+
+        <section class="card" style="grid-column:1 / -1">
+        <h3>Adaptaciones asignadas por el tutor</h3>
+        <p style="color:#555">
+            Aquí se listan las medidas de apoyo: tiempo extra en exámenes, materiales accesibles, ubicación preferente, etc.
+        </p>
+
+        <table class="tabla" style="margin-top:8px">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Asignatura</th>
+                <th>Tipo de ajuste</th>
+                <th>Periodo</th>
+                <th>Responsable</th>
+                <th>Estado</th>
+            </tr>
+            </thead>
+            <tbody id="tablaAdaptacionesEst"></tbody>
+        </table>
+        </section>
+
+    </main>
+<script src="js/db.js"></script>
+
+<script>
+    const db = cargarDB();
+    const tbody = document.getElementById("tablaAdaptacionesEst");
+
+    // leer id del estudiante desde la URL
+    // ejemplo: estudiante.html?id=EST-17336...
+    const params = new URLSearchParams(window.location.search);
+    const idEst = params.get("id");
+
+    const est = db.estudiantes.find(x => x.id === idEst);
+
+    if(!est){
+        tbody.innerHTML = `
+        <tr>
+            <td colspan="6" style="text-align:center;">
+            Estudiante no encontrado (ID no válido).
+            </td>
+        </tr>`;
+    } 
+    else if(est.adaptaciones.length === 0){
+        tbody.innerHTML = `
+        <tr>
+            <td colspan="6" style="text-align:center;">
+            No tienes adaptaciones registradas.
+            </td>
+        </tr>`;
+    } 
+    else {
+        tbody.innerHTML = est.adaptaciones.map((a, i) => `
+        <tr>
+            <td>${i + 1}</td>
+            <td>${a.asignatura}</td>
+            <td>${a.tipoAjuste}</td>
+            <td>${a.fechaInicio} → ${a.fechaFin}</td>
+            <td>${a.responsable}</td>
+            <td>${a.estado}</td>
+        </tr>
+        `).join("");
+    }
+</script>
+
+</body>
+</html>

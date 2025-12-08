@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutor / Inclusión | ULEAM</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <header class="uleam">
+        <img src="img/logo-uleam.png" alt="ULEAM">
+        <strong>Gestión de estudiantes</strong>
+        <div class="menu">
+        <a class="btn btn--gris" href="index.html">Salir</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="card">
+        <h3>🔎 Buscar estudiante</h3>
+        <div class="toolbar" style="margin-top:8px">
+            <input type="search" placeholder="Nombre / Cédula / Carrera" style="padding:10px; border:1px solid #ddd; border-radius:8px; width:290px">
+            <button class="btn btn--azul">Buscar</button>
+        </div>
+
+        <div class="grid2" style="margin-top:14px">
+            <div class="card">
+            <h4>👤 Estudiante: ________ (Cód. _____)</h4>
+            <p>Carrera: ________ &nbsp; | &nbsp; Semestre: __° &nbsp; | &nbsp; Tutor: ________</p>
+            </div>
+            <div></div>
+        </div>
+        </section>
+
+        <section class="grid2" style="margin-top:16px">
+        <div class="card">
+            <h3>Diagnósticos registrados</h3>
+            <table class="tabla" style="margin-top:8px">
+            <thead><tr><th>Fecha</th><th>Tipo</th><th>Descripción breve</th><th>Archivo</th><th>Acciones</th></tr></thead>
+            <tbody>
+                <tr><td>2025-04-12</td><td>Visual</td><td>Informe oftalmológico</td><td>PDF</td><td><a class="link" href="#">Ver</a></td></tr>
+                <tr><td>2025-07-28</td><td>Auditiva</td><td>Evaluación médica</td><td>JPG</td><td><a class="link" href="#">Ver</a></td></tr>
+            </tbody>
+            </table>
+        </div>
+
+        <div class="card">
+            <div class="toolbar" style="justify-content:space-between">
+            <h3>Adaptaciones / Apoyos razonables asignados</h3>
+            <a class="btn btn--verde" href="adaptacion.html">Nueva adaptación</a>
+            </div>
+            <table class="tabla" style="margin-top:8px">
+            <thead><tr><th>Fecha</th><th>Tipo de ajuste</th><th>Descripción</th><th>Asignatura</th><th>Estado</th><th>Acciones</th></tr></thead>
+            <tbody id="tablaAdaptacionesTutor"></tbody>
+            </table>
+        </div>
+        </section>
+
+        <section class="card" style="margin-top:16px">
+        <h3>Observaciones / Seguimiento del caso</h3>
+        <textarea placeholder="Agregar nota de seguimiento..." style="width:100%; min-height:110px; margin-top:8px"></textarea>
+        <div class="toolbar" style="margin-top:8px"><button class="btn btn--azul">Guardar</button></div>
+        </section>
+    </main>
+<script src="js/db.js"></script>
+
+<script>
+    const db = cargarDB();
+    const tbodyAdp = document.getElementById("tablaAdaptacionesTutor");
+
+    const adaptaciones = db.estudiantes.flatMap(est =>
+        est.adaptaciones.map(adp => ({
+        estudiante: est.nombres + " " + est.apellidos,
+        ...adp
+        }))
+    );
+
+    if(adaptaciones.length === 0){
+        tbodyAdp.innerHTML = `
+        <tr>
+            <td colspan="5" style="text-align:center;">
+            No hay adaptaciones registradas.
+            </td>
+        </tr>
+        `;
+    } else {
+        tbodyAdp.innerHTML = adaptaciones.map(a => `
+        <tr>
+            <td>${a.estudiante}</td>
+            <td>${a.asignatura}</td>
+            <td>${a.tipoAjuste}</td>
+            <td>${a.fechaInicio} → ${a.fechaFin}</td>
+            <td>${a.estado}</td>
+        </tr>
+        `).join("");
+    }
+</script>
+</body>
+</html>

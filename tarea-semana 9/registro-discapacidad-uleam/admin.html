@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrador | ULEAM</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <script src="js/comportamiento.js"></script>
+</head>
+<body>
+    <header class="uleam">
+        <img src="img/logo-uleam.png" alt="ULEAM">
+        <strong>Bitácora de usuarios</strong>
+        <div class="menu">
+        <a class="btn btn--gris" href="index.html">Cerrar sesión</a>
+        </div>
+    </header>
+
+    <main class="grid2">
+        <section class="card col">
+        <div class="toolbar" style="margin-bottom:10px">
+            <input type="search" placeholder="🔍 Buscar" style="padding:10px; border:1px solid #ddd; border-radius:8px; width:220px">
+            <a class="btn btn--verde" href="usuario.html">Usuario Nuevo</a>
+        </div>
+        <table class="tabla">
+            <thead>
+            <tr><th>Nombre y apellidos</th><th>Correo institucional</th><th>Usuario</th><th>Acciones</th></tr>
+            </thead>
+            <tbody id="tablaUsuarios"></tbody>
+        </table>
+        </section>
+
+        <aside class="center"><img src="img/icono-discapacidad.png" alt="" style="max-width:100%"></aside>
+    </main>
+<script src="js/db.js"></script>
+<script src="js/db.js"></script>
+
+<script>
+    const db = cargarDB();
+    const tbody = document.getElementById("tablaUsuarios");
+
+    if(db.estudiantes.length === 0){
+        tbody.innerHTML = `
+        <tr>
+            <td colspan="4" style="text-align:center;">
+            No hay estudiantes registrados.
+            </td>
+        </tr>`;
+    } else {
+        tbody.innerHTML = db.estudiantes.map(e => `
+        <tr>
+            <td>${e.nombres} ${e.apellidos}</td>
+            <td>${e.correo || "—"}</td>
+            <td>Estudiante</td>
+            <td>
+            <a class="link" href="usuario.html?id=${e.id}">Editar</a>
+            </td>
+        </tr>
+        `).join("");
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restablecer contraseña | ULEAM</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/formularios.css">
+    <script src="js/validaciones.js"></script>
+</head>
+<body>
+    <header class="uleam">
+        <img src="img/logo-uleam.png" alt="ULEAM">
+        <strong>Restablecer contraseña</strong>
+    </header>
+
+    <main>
+        <section class="card form">
+        <div class="badge">
+            Las contraseñas deben: tener 8+ caracteres, 1 mayúscula, 1 número y 1 símbolo.
+        </div>
+        <form onsubmit="return validarRestablecer()">
+            <div class="field">
+            <label for="nueva">Nueva contraseña</label>
+            <input id="nueva" type="password" required>
+            </div>
+            <div class="field">
+            <label for="confirmar">Confirmar contraseña</label>
+            <input id="confirmar" type="password" required>
+            </div>
+            <div class="toolbar">
+            <button class="btn btn--azul" type="submit">Restablecer contraseña</button>
+            <button class="btn btn--gris" type="button" onclick="const p=document.getElementById('nueva'); const q=document.getElementById('confirmar'); p.type=q.type=(p.type==='password'?'text':'password')">Mostrar mi escritura</button>
+            </div>
+        </form>
+        </section>
+    </main>
+</body>
+</html>
