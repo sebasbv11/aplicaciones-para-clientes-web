@@ -1,75 +1,13 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <!-- Indica el conjunto de caracteres y asegura correcta visualización en dispositivos móviles -->
+<!doctype html>
+<html lang="en">
+  <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <!-- Título de la pestaña del navegador -->
-    <title>ULEAM | Registro de discapacidad</title>
-
-    <!-- Hojas de estilo externas -->
-    <link rel="stylesheet" href="css/estilos.css"/>
-    <link rel="stylesheet" href="css/login.css"/>
-
-    <!-- Scripts externos: validaciones (por ejemplo validar formulario) y accesibilidad (p. ej. cambiar tamaño de texto) -->
-    <script src="js/validaciones.js"></script>
-    <script src="js/accesibilidad.js"></script>
-</head>
-<body>
-    <!-- Contenedor principal centrado para la caja de inicio de sesión -->
-    <div class="login-wrap">
-        <!-- Caja de login; role="form" mejora accesibilidad; aria-labelledby apunta al encabezado -->
-        <div class="login-box" role="form" aria-labelledby="tit">
-            <!-- Logo de la institución -->
-            <div class="logo-uleam"><img src="img/logo-uleam.png" alt="ULEAM"></div>
-
-            <!-- Título del formulario; id usado por aria-labelledby -->
-            <h2 id="tit">Inicio de sesión</h2>
-
-            <!-- Campo de correo electrónico -->
-            <div class="field">
-                <!-- label asociado mediante for="correo" para mejorar accesibilidad -->
-                <label for="correo">Correo:</label>
-                <!-- input type="email" permite validación nativa del navegador -->
-                <input type="email" id="correo" placeholder="usuario@uleam.edu.ec" aria-label="Correo institucional">
-            </div>
-
-            <!-- Campo de contraseña -->
-            <div class="field">
-                <label for="clave">Contraseña:</label>
-                <!-- type="password" oculta el texto; id usado por la función mostrarContrasena -->
-                <input type="password" id="clave" placeholder="********" aria-label="Contraseña">
-            </div>
-
-            <!-- Acciones adicionales: mostrar contraseña y recordar sesión -->
-            <div class="actions">
-                <!-- Checkbox que ejecuta una función JS para alternar visibilidad de la contraseña -->
-                <label><input type="checkbox" onclick="mostrarContrasena('clave')"> Mostrar</label>
-                <!-- Checkbox para la opción "Recuérdame" (funcionalidad a implementar en backend/JS) -->
-                <label><input type="checkbox"> Recuérdame</label>
-            </div>
-
-            <!-- Botón principal que llama a la función validarLogin definida en validaciones.js -->
-            <button class="btn btn--rojo" style="width:100%" onclick="validarLogin()">Iniciar Sesión</button>
-
-            <!-- Enlace para recuperación de contraseña -->
-            <p style="text-align:right; margin:8px 0">
-                <a class="link" href="recuperar.html">¿Olvidó su contraseña?</a>
-            </p>
-
-            <!-- Otras opciones de inicio de sesión (p. ej. SSO con Microsoft 365) -->
-            <div class="alt-login">
-                <div class="sep">— o —</div>
-                <button class="btn btn--verde" style="width:100%">Microsoft 365 uleam</button>
-            </div>
-
-            <!-- Barra de herramientas para accesibilidad: botones para cambiar tamaño de texto -->
-            <div class="toolbar" style="margin-top:10px;">
-                <!-- Llaman a funciones en accesibilidad.js para aumentar/disminuir tamaño de fuente -->
-                <button class="btn btn--gris" onclick="cambiarTamanioTexto('aumentar')">A+</button>
-                <button class="btn btn--gris" onclick="cambiarTamanioTexto('disminuir')">A-</button>
-            </div>
-        </div>
-    </div>
-</body>
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>uleam-inclusion</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>

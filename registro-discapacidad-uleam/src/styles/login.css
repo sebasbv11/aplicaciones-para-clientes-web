@@ -1,0 +1,25 @@
+/* Fondo con ilustración*/
+.login-wrap {
+    min-height: 100vh;
+    background: #fff url("../assets/fondo-login.png") left center no-repeat;
+    background-size: 70%;   /* Ajusta el tamaño (ej. 30%, 40%, 50%) */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 24px;
+}
+.login-box{
+    width:380px; background:#fafafa; border:1px solid var(--borde); border-radius:8px;
+    padding:18px; box-shadow:0 6px 18px rgba(0,0,0,.1);
+}
+.login-box h2{margin:6px 0 14px; font-size:20px}
+.field{margin-bottom:12px}
+.field label{display:block; font-size:14px; margin-bottom:6px}
+.field input[type="email"], .field input[type="password"]{
+    width:100%; padding:10px; border:1px solid var(--borde); border-radius:6px;
+}
+.actions{display:flex; align-items:center; justify-content:space-between; margin:10px 0}
+.alt-login{margin-top:8px; text-align:center}
+.alt-login .sep{margin:6px 0; color:#666}
+.logo-uleam{display:flex; justify-content:flex-end; margin-bottom:8px}
+.logo-uleam img{height:42px}

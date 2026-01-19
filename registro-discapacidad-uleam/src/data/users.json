@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "correo": "admin@uleam.edu.ec",
+        "password": "Admin123!",
+        "rol": "admin"
+    },
+    {
+        "id": 2,
+        "correo": "tutor@uleam.edu.ec",
+        "password": "Tutor123!",
+        "rol": "tutor"
+    },
+    {
+        "id": 3,
+        "correo": "estudiante@uleam.edu.ec",
+        "password": "Est123!",
+        "rol": "estudiante"
+    }
+]
